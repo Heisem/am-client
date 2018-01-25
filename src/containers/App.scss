@@ -43,6 +43,13 @@ $fa-font-path: "~font-awesome/fonts";
   }
 }
 
+#search {
+  @include media-breakpoint-up(lg) {
+    width: 160px;
+    margin-right: 5px;
+  }
+}
+
 header {
   height: 80px;
   background-color: $blue;

@@ -8,23 +8,25 @@ import { fetchHotels } from '../redux/actions';
 
 class App extends Component {
   state = {
-    name: '',
+    search: '',
     stars: [],
     starsToggle: false,
+    searchToggle: false,
   }
 
   componentDidMount() {
     this.props.fetchHotels();
   }
 
-  handleStarsToggle = (e) => {
-    this.setState({
-      starsToggle: !this.state.starsToggle,
-    });
+  handleToggle = (e) => {
+    const name = e.currentTarget.getAttribute('name');
+    this.setState((prevState, props) => ({
+      [name]: !prevState[name],
+    }));
   }
 
   handleStarsChange = (e) => {
-    const { value } = e.target;
+    const { value } = e.currentTarget;
     const index = this.state.stars.indexOf(value);
     if (index === -1) {
       this.setState((prevState, props) => ({
@@ -43,6 +45,17 @@ class App extends Component {
     }
   }
 
+  handleInput = (e) => {
+    const { name } = e.target;
+    const { value } = e.target;
+    this.setState({[name]: value });
+  }
+
+  handleSearchSubmit = (e) => {
+    console.log('Search Submitted');
+    e.preventDefault();
+  }
+
   render() {
     return (
       this.props.loading ? 'Loading...' :
@@ -57,10 +70,15 @@ class App extends Component {
                 </div>
               </div>
               <Sidebar>
-                <Search />
+                <Search
+                  searchToggle={this.state.searchToggle}
+                  handleInput={this.handleInput}
+                  handleToggle={this.handleToggle}
+                  handleSearchSubmit={this.handleSearchSubmit}
+                />
                 <Stars
                   starsToggle={this.state.starsToggle}
-                  handleStarsToggle={this.handleStarsToggle}
+                  handleToggle={this.handleToggle}
                   handleStarsChange={this.handleStarsChange}
                 />
               </Sidebar>

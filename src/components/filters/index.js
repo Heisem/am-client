@@ -1,2 +1,2 @@
-export * from './stars';
-export * from './search';
+export * from './Stars';
+export * from './Search';

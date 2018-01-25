@@ -2,14 +2,15 @@ import React from 'react';
 
 export const Stars = ({
   starsToggle,
-  handleStarsToggle,
+  handleToggle,
   handleStarsChange
 }) => (
   <div className="row filter-stars">
     <div className="col">
       <div
         className="d-flex justify-content-middle text-primary"
-        onClick={handleStarsToggle}
+        name="starsToggle"
+        onClick={handleToggle}
       >
       <i className="icon icon-star"></i>
       <span>Estrellas</span>
@@ -27,7 +28,7 @@ export const Stars = ({
       <div className="w-100" key={index} hidden={starsToggle}>
         <div className="col text-warning">
           <div className="form-check">
-            <input type="checkbox" id={`${index}stars`} className="form-check-input" value="5" onChange={handleStarsChange} />
+            <input type="checkbox" id={`${index}stars`} className="form-check-input" value={item} onChange={handleStarsChange} />
             <label className="form-check-label" htmlFor={`${index}stars`}>
               {[...Array(item)].map((item, index) => <i key={`${index}stars`} className="icon icon-star"></i>)}
             </label>
