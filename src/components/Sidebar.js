@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const Sidebar = ({
-  children,
+  children
 }) => (
     <aside className="row">
       <div className="col">
