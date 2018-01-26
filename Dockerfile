@@ -5,6 +5,7 @@ RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
 ARG ports_expose
 ARG supervisor
+ARG nginx
 
 # update the repository sources list
 # and install dependencies
@@ -30,7 +31,7 @@ ADD $supervisor /etc/supervisor/conf.d/supervisor.conf
 
 ## nginx
 RUN useradd --no-create-home nginx
-ADD nginx.conf /etc/nginx/nginx.conf
+ADD $nginx /etc/nginx/nginx.conf
 
 # add node and npm to path so the commands are available
 ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
