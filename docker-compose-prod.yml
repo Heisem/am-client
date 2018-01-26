@@ -9,7 +9,6 @@ services:
         supervisor: supervisor-prod.conf
         nginx: nginx-prod.conf
     volumes:
-      - ./:/home/client
       - /mnt/logs/client:/logs
     environment:
       NODE_ENV: production
