@@ -6,20 +6,19 @@ export const Search = ({
   handleInput,
   handleSearchSubmit
 }) => (
-  <div className="row filter-search">
+  <div className="row filter-search d-flex align-items-center">
     <div className="col" onClick={handleToggle} name="searchToggle">
-      <div
-        className="d-flex justify-content-middle text-primary"
-      >
-      <i className="icon icon-search"></i>
-      <span>Nombre de hotel</span>
-      <i
-        className={
-          `fa ml-auto align-self-center text-primary
-          ${searchToggle ? 'fa-caret-down' : 'fa-caret-up'}`
-        }
-        aria-hidden="true">
-      </i>
+      <div className="d-flex justify-content-middle text-primary">
+        <i className="icon icon-search"></i>
+        <span className="title">Nombre de hotel</span>
+        <i
+          className={
+            `fa ml-auto align-self-center text-primary
+            ${searchToggle ? 'fa-caret-down' : 'fa-caret-up'}`
+          }
+          aria-hidden="true"
+        >
+        </i>
     </div>
     </div>
     <div className="w-100"></div>
@@ -39,4 +38,4 @@ export const Search = ({
       </form>
     </div>
   </div>
-)
+);

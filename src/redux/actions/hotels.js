@@ -12,9 +12,13 @@ const fetchingHotels = () => ({
   type: 'FETCHING_HOTELS',
 });
 
-export const fetchHotels = () => (dispatch) => {
+export const fetchHotels = ({ search = '', stars = [] } = {}) => (dispatch) => {
   dispatch(fetchingHotels());
-  return axios.get(`${api}hotel`).then(
+  const query = `
+    ?match=${search ? `{"name":"${search}"}` : ''}
+    &or=${stars.length > 0 ? `{"stars":[${stars}]}` : ''}
+  `.replace(/^ +| +$/gm, "");
+  return axios.get(`${api}hotel${query}`).then(
     hotels => dispatch(getHotels(hotels.data))
   );
-}
+};

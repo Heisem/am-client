@@ -1,0 +1,16 @@
+version: "3.1"
+services:
+  api-client:
+    container_name: api-client
+    build:
+      context: ./
+      args:
+        ports_expose: 3000
+        supervisor: supervisor.conf
+    volumes:
+      - ./:/home/client
+      - /mnt/logs/client:/logs
+    environment:
+      NODE_ENV: development
+    ports:
+      - "3000:3000"
