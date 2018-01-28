@@ -11,7 +11,7 @@ export const Stars = ({
     <div className="col">
       <div
         className="d-flex justify-content-middle text-primary"
-        name="starsToggle"
+        data-name="starsToggle"
         onClick={handleToggle}
       >
         <i className="icon icon-star"></i>

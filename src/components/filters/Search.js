@@ -7,7 +7,7 @@ export const Search = ({
   handleSearchSubmit
 }) => (
   <div className="row filter-search d-flex align-items-center">
-    <div className="col" onClick={handleToggle} name="searchToggle">
+    <div className="col" onClick={handleToggle} data-name="searchToggle">
       <div className="d-flex justify-content-middle text-primary">
         <i className="icon icon-search"></i>
         <span className="title">Nombre de hotel</span>
