@@ -11,10 +11,10 @@ export class Sidebar extends Component {
     }
 
     handleToggle = (e) => {
-        const name = e.currentTarget.getAttribute('data-name');
-        this.setState((prevState, props) => ({
-            [name]: !prevState[name],
-        }));
+      const name = e.currentTarget.getAttribute('data-name');
+      this.setState((prevState, props) => ({
+          [name]: !prevState[name],
+      }));
     }
 
     handleStarsChange = (e) => {
