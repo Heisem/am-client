@@ -3,61 +3,14 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import './App.css';
-import { Sidebar, Hotel, Stars, Header, Search } from '../components';
 import { fetchHotels } from '../redux/actions';
+import { Sidebar } from './Sidebar';
+import { Header, Hotel } from '../components';
 
 class App extends Component {
-  state = {
-    search: '',
-    stars: [],
-    starsToggle: false,
-    searchToggle: false,
-  }
 
   componentDidMount() {
     this.props.fetchHotels();
-  }
-
-  handleToggle = (e) => {
-    const name = e.currentTarget.getAttribute('name');
-    this.setState((prevState, props) => ({
-      [name]: !prevState[name],
-    }));
-  }
-
-  handleStarsChange = (e) => {
-    const value = Number(e.currentTarget.value);
-    const index = this.state.stars.indexOf(value);
-    if (index === -1) {
-      this.setState((prevState, props) => ({
-        stars: [
-          ...prevState.stars,
-          value
-        ],
-      }), () => this.props.fetchHotels(this.state));
-    } else {
-      this.setState((prevState, props) => ({
-        stars: [
-          ...prevState.stars.slice(0, index),
-          ...prevState.stars.slice(index + 1)
-        ],
-      }), () => this.props.fetchHotels(this.state));
-    }
-  }
-
-  handleAllStarsChange = (e) => {
-    this.setState({ stars: [] }, () => this.props.fetchHotels(this.state))
-  }
-
-  handleInput = (e) => {
-    const { name } = e.target;
-    const { value } = e.target;
-    this.setState({ [name]: value });
-  }
-
-  handleSearchSubmit = (e) => {
-    e.preventDefault();
-    this.props.fetchHotels(this.state);
   }
 
   render() {
@@ -67,26 +20,7 @@ class App extends Component {
         <div className="container">          
           <div className="row">
             <div className="col col-lg-3">
-              <Sidebar>
-                <div className="row filter-title">
-                  <div className="col">
-                    <span className="text-primary">Filtros</span>
-                  </div>
-                </div>
-                <Search
-                  searchToggle={this.state.searchToggle}
-                  handleInput={this.handleInput}
-                  handleToggle={this.handleToggle}
-                  handleSearchSubmit={this.handleSearchSubmit}
-                />
-                <Stars
-                  starsToggle={this.state.starsToggle}
-                  handleToggle={this.handleToggle}
-                  handleStarsChange={this.handleStarsChange}
-                  stars={this.state.stars}
-                  handleAllStarsChange={this.handleAllStarsChange}
-                />
-              </Sidebar>
+              <Sidebar {...this.props} />
             </div>
             {
               this.props.loading ? 'Loading...' :
