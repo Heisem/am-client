@@ -9,11 +9,7 @@ export const Stars = ({
 }) => (
   <div className="row filter-stars d-flex align-items-center">
     <div className="col">
-      <div
-        className="d-flex justify-content-middle text-primary"
-        data-name="starsToggle"
-        onClick={handleToggle}
-      >
+      <div className="d-flex justify-content-middle text-primary" data-name="starsToggle" onClick={handleToggle}>
         <i className="icon icon-star"></i>
         <span className="title">Estrellas</span>
         <i
@@ -24,7 +20,7 @@ export const Stars = ({
           aria-hidden="true"
         >
         </i>
-    </div>
+      </div>
     </div>
     <div className="col-12" hidden={starsToggle}>
       <div className="w-100">
