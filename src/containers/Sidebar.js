@@ -38,7 +38,7 @@ export class Sidebar extends Component {
     }
   
     handleAllStarsChange = (e) => {
-      this.setState({ stars: [] }, () => this.props.fetchHotels(this.state))
+      this.setState({ stars: [] }, () => this.props.fetchHotels(this.state));
     }
 
     handleInput = (e) => {
